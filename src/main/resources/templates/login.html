@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    </head>
+    <body>
+    <div class="jumbotron">
+      <h1 class="display-4">Log in to our system</h1>
+      <img th:src="@{/img/icon.png}" width="200px" height="200px"/><p>
+        <div th:if="${param.error}">
+            Invalid user name or password, please try again!
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out. Welcome back again!
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div><label> Username:* <input type="text" name="username"/></label></div>
+            <div><label> Password:* <input type="password" name="password"/></label></div>
+            <input type="submit" class="btn btn-primary" value="Sign In"/>
+            <a class="btn btn-info" href="/">Home page</a>
+            <br>*Required
+        </form>
+        </div>
+    </body>
+</html>

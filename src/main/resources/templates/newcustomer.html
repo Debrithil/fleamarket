@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservation form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body><div align="center">
+	<h1 class="display-4">New customer</h1><br>
+	<div class="jumbotron">
+	<img th:src="@{/img/icon2.png}" width="200px" height="200px"/><p>
+	<p class="lead">Create a new reservation</p>
+	<form action="#" th:action="@{/savecustomer}"  th:object= ${customer} method="post">
+	<p>Customer name: <input type="text" th:field="${customer.name}" /></p>
+	<p>Customer phone number: <input type="text" th:field="${customer.phonenumber}" /></p>
+
+    <p><input type="submit" class="btn btn-primary" value="Submit" /> <input type="reset" class="btn btn-info" value="Reset" /></p>
+	</form>
+	</div></div>
+</body>
+</html>

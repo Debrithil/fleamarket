@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reservation form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body><div align="center">
+	<h1 class="display-4">New reservation</h1><br>
+	<div class="jumbotron">
+	<img th:src="@{/img/icon2.png}" width="200px" height="200px"/><p>
+	<p class="lead">Create a new reservation</p>
+	<form action="#" th:action="@{/savereservation}"  th:object= ${reservation} method="post">
+	<p>Place: <input type="text" th:field="${reservation.place}" /></p>
+	<p>Price: <input type="text" th:field="${reservation.price}" /></p>
+	<p>Time period: <input type="text" th:field="${reservation.date}" /></p>
+
+	<label for="categorylist">Customer name:</label>
+	
+	<select id="customerlist" th:field="*{customer}" class="form-control">
+    <option th:each="customer: ${customers}" th:value="${customer.customerid}" th:text="${customer.name}"></option>
+   	 </select>
+	<br>
+    <p><input type="submit" class="btn btn-primary" value="Submit" /> <input type="reset" class="btn btn-info" value="Reset" /></p>
+	</form>
+	</div></div>
+</body>
+</html>

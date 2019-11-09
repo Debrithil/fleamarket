@@ -1,0 +1,42 @@
+	<!DOCTYPE HTML>
+	<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<head>
+	<title>Reservation list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+	
+	</head>
+	<body>
+			<div class="col-md-4">
+			<h1 class="display-4">Reservations</h1>
+			</div>
+			 <div class="jumbotron">
+			 	<img th:src="@{/img/market.png}" width="110px" height="110px"/><p>
+				<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Log out" class="btn btn-danger"/>
+			<table><tr><td sec:authorize="hasAuthority('ADMIN')"><a href="/newreservation" class="btn btn-info">Reserve a table</a></td></tr>
+			<tr><td sec:authorize="hasAuthority('ADMIN')"><a href="/newcustomer" class="btn btn-primary">New customer</a></td></tr></table></form></div>
+			<form class="form-inline my-2 my-lg-0" th:action="@{/search}" method="post">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search place or date" aria-label="Search" name="searchInformation">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+			<table class="table table-striped">
+				<tr>
+				<th><p class="lead">Place</th>
+				<th><p class="lead">Price</th>
+				<th><p class="lead">Time period</th>
+				<th><p class="lead">Customer name</th>
+				<th><p class="lead">Customer phone number</th>
+			</tr>
+			<tr th:each="reservation : ${reservations}">
+				<td th:text="${reservation.place}">Place</td>
+				<td th:text="${reservation.price}">Price</td>
+				<td th:text="${reservation.date}">Time period</td>
+				<td th:text="${reservation.customer.name}">Customer name</td>
+				<td th:text="${reservation.customer.phonenumber}">Customer phone number</td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletereservation/{id}(id=${reservation.id})}" class="btn btn-primary">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editreservation/{id}(id=${reservation.id})}" class="btn btn-info">Edit</a></td>
+			</tr>
+		</table>
+	</body>
+	</html>

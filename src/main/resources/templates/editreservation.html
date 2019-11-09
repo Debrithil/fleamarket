@@ -1,0 +1,33 @@
+	<!DOCTYPE HTML>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<title>Reservation list</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}" />
+	</head>
+	<body>
+	<div align="center">
+	<h1 class="display-4">Edit reservation</h1>
+		<div>
+		    <div class="jumbotron">
+		<img th:src="@{/img/icon3.png}" width="200px" height="200px"/><p>
+		
+		<form action="#" th:action="@{/savereservation}"  th:object= ${reservation} method="post">
+			<input type="hidden" th:field="${reservation.id}" class="form-control"/>
+			<p>Place: <input type="text" th:field="${reservation.place}" /></p>
+			<p>Price: <input type="text" th:field="${reservation.price}" /></p>
+			<p>Time period: <input type="text" th:field="${reservation.date}" /></p>
+			<p>Customer phone number: <input type="text" th:field="${reservation.customer.phonenumber}" /></p>
+			
+			<label for="categorylist">Customer name:</label>
+	
+		<select id="customerlist" th:field="*{customer}" class="form-control">
+    	<option th:each="customer: ${customers}" th:value="${customer.customerid}" th:text="${customer.name}"></option>
+   	 </select>
+	<br>
+		    <p><input type="submit" class="btn btn-primary" value="Submit" /> <input type="reset" class="btn btn-info" value="Reset" /></p>
+		</form>
+	</div></div></div>
+		
+	</body>
+	</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Flea-market</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+<h1 class="display-4">FLEA-MARKET</h1>
+    <div class="jumbotron">
+      <img th:src="@{/img/fleamarket.png}" width="200px" height="200px"/><p>
+<p class="lead">The table price includes a table that is two metres long and one metre wide.
+<br><b>WEEKDAYS 10$
+<br>WEEKENDS 30$</b>
+<br>
+<br><b>Prices:</b>
+<br>on Weekdays from 8 a.m. to 6 p.m
+<br>on Saturdays from 8 a.m. to 4 p.m.
+<br>on Sundays from 10 a.m. to 4 p.m.
+<p>
+<a class="btn btn-primary" href="/img/floorplan.png">Floor plan</a>
+<a class="btn btn-info" href="/contact">Contact Us</a>
+<a class="btn btn-primary" href="/reservationlist">Reservation list</a>
+<a class="btn btn-primary" href="/login">Login to our application</a></div>
+
+</body>
+</html>
